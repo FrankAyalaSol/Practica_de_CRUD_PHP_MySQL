@@ -1,3 +1,13 @@
+<?php
+include('connection.php');
+
+$con = connection();
+
+$sql = "SELECT * FROM users";
+
+$query = mysqli_query($con,$sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,15 +46,19 @@
                 </tr>
             </thead>
             <tbody>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-
+            <?php while($row = mysqli_fetch_array($query)):?>
+            <tr>
+                <th> <?= $row['id'] ?> </th>
+                <th> <?= $row['name'] ?> </th>
+                <th> <?= $row['lastname'] ?> </th>
+                <th> <?= $row['username'] ?> </th>
+                <th> <?= $row['password'] ?> </th>
+                <th> <?= $row['email'] ?> </th>
+                <!-- ACCIONES -->
                 <th><a href="">EDITAR</a></th>
                 <th><a href="">ELIMINAR</a></th>
+            </tr>
+            <?php endwhile; ?>
             </tbody>
         </table>
     </div>
