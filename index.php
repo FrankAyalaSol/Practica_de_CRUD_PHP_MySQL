@@ -13,11 +13,12 @@ $query = mysqli_query($con,$sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="CSS/styles.css">
     <title>Creación de Usuario con PHP Y MySQL</title>
 </head>
 <body>
     <div>
-        <form action="">
+        <form action="insert_user.php" method="POST">
             <h1>Crear Usuario</h1>
 
             <input type="text" name="name" placeholder="Nombre">
@@ -55,8 +56,9 @@ $query = mysqli_query($con,$sql);
                 <th> <?= $row['password'] ?> </th>
                 <th> <?= $row['email'] ?> </th>
                 <!-- ACCIONES -->
-                <th><a href="">EDITAR</a></th>
-                <th><a href="">ELIMINAR</a></th>
+                <th><a href="update.php?id=<?= $row['id'] ?>" class="btn editar">EDITAR</a></th>
+                <th><a href="delete_user.php?id=<?= $row['id'] ?>" class="btn eliminar">ELIMINAR</a></th>
+
             </tr>
             <?php endwhile; ?>
             </tbody>
